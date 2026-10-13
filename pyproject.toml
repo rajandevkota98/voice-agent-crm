@@ -1,0 +1,28 @@
+[project]
+name = "voice-crm"
+version = "0.1.0"
+description = "WhatsApp and voice follow-up agent on top of a small CRM."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "httpx>=0.27",
+    "python-multipart>=0.0.9",
+    "uvicorn>=0.29",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+voice-crm = "voice_crm.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/voice_crm"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
